@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+}
+header {
+  height: 200px;
+  /*background-image: url("images/pattern-bg.png");*/
+}
+
+/*Text-Container and Search Box*/
+header > div[id="text-container"] {
+  width: 40%;
+  background: red;
+  margin-top: -180px;
+}
+header > div[id="text-container"] h2,
+header > div[id="text-container"] form {
+  width: 100%;
+}
+header > div[id="text-container"] form input,
+header > div[id="text-container"] form button{
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+}
+header > div[id="text-container"] form input{
+  border-top-right-radius: initial; 
+  border-bottom-right-radius: initial;
+  width: 80%;
+  padding-left: 20px;
+  margin-right: 3px;
+}
+header > div[id="text-container"] form button{
+  border-top-left-radius: initial; 
+  border-bottom-left-radius: initial;
+  width: 19%; 
+  opacity: 0.8;
+}
+
+/*IP-Details*/
+header > div[id="ip-details"] {
+  position: relative;
+  width: 70%;
+  margin-top: 50px;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+header > div div{
+  padding-right: 20px;
+}
+header > div div:nth-child(2),
+header > div div:nth-child(3),
+header > div div:nth-child(4) {
+  border-left: 1px solid black;
+  padding-left: 20px;
+}
+
+
+/*MAIN*/
+main > iframe {
+  /*border: none; */
+}

@@ -1,0 +1,67 @@
+@media screen and (max-width:900px) {
+	/*Text-Container and Search Box*/
+	header > div[id="text-container"] {
+		width: 60%;
+	}
+
+	/*IP-Details*/
+	header > div[id="ip-details"] {
+		width: 90%;
+	}
+	header > div div h4{
+		font-size: 1.4em;
+	}
+}
+
+@media screen and (max-width:630px) {
+	header {
+		height: 260px;
+	}
+
+	/*Text-Container and Search Box*/
+	header > div[id="text-container"] {
+		width: 80%;
+		margin-top: -230px;
+	}
+	header > div[id="text-container"] form {
+		display: block !important;
+		width: 100%;
+	}
+	header > div[id="text-container"] form input,
+	header > div[id="text-container"] form button{
+		width: inherit;
+	}
+	header > div[id="text-container"] form input{
+  		border-top-right-radius: 5px; 
+  		border-bottom-right-radius: 5px;
+  	}
+  	header > div[id="text-container"] form input::placeholder {
+  		text-align: center;
+  	}
+  	header > div[id="text-container"] form button{
+  		border-top-right-radius: initial; 
+  		border-bottom-left-radius: 5px;
+  	}
+
+	/*IP-Details*/
+	header > div[id="ip-details"] {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	header > div div:nth-child(1),
+	header > div div:nth-child(2) {
+		margin-bottom: 10px;
+	}
+	header > div div:nth-child(3) {
+		border-left: none;
+	}
+	header > div[id="ip-details"] div{
+		width: 50%;
+	}
+}
+
+@media screen and (max-width:400px) {
+	header > div div:nth-child(1) {
+		word-wrap: break-word;
+	}
+}
