@@ -15,7 +15,6 @@ header {
 /*Text-Container and Search Box*/
 header > div[id="text-container"] {
   width: 40%;
-  background: red;
   margin-top: -180px;
 }
 header > div[id="text-container"] h2,
@@ -31,15 +30,22 @@ header > div[id="text-container"] form button{
 header > div[id="text-container"] form input{
   border-top-right-radius: initial; 
   border-bottom-right-radius: initial;
+  color: rgba(0, 0, 0, 0.8);
   width: 80%;
   padding-left: 20px;
   margin-right: 3px;
+  background: rgba(255, 255, 255, 0.7);
 }
+header > div[id="text-container"] form input:focus{
+  outline: thin solid transparent;
+  /*caret-color: skybl;*/
+}
+
 header > div[id="text-container"] form button{
   border-top-left-radius: initial; 
   border-bottom-left-radius: initial;
   width: 19%; 
-  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 /*IP-Details*/
@@ -64,5 +70,5 @@ header > div div:nth-child(4) {
 
 /*MAIN*/
 main > iframe {
-  /*border: none; */
+  height: 80vh;
 }
