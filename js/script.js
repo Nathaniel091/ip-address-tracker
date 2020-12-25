@@ -59,7 +59,7 @@ window.addEventListener('load', (event) => {
 			let lat = data.location.lat;
 			let lng = data.location.lng;
 			let googlemapUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
-			let googlemapUrl = `https://www.google.com/maps/embed/v1/place?key={BROWSER_KEY}&q={YOUR_ADDRESS_ENCODED}`;
+			// let googlemapUrl = `https://www.google.com/maps/embed/v1/place?key={BROWSER_KEY}&q={YOUR_ADDRESS_ENCODED}`;
 			// let googlemapUrl = `https://www.google.com/maps/place/50%C2%B006'14.0%22N+8%C2%B038'57.0%22E/@${lat},${lng},17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x0!8m2!3d50.1039!4d8.64917`;
 			let mapFrame = document.getElementById("map-frame")
 			
@@ -69,6 +69,7 @@ window.addEventListener('load', (event) => {
 
 
 			// mapFrame.setAttribute('src', googlemapUrl)
+			console.log(data)
 			console.log(mapFrame)
 
 			IP_details.textContent = `${data.ip}`;
@@ -88,11 +89,6 @@ window.addEventListener('load', (event) => {
 		if (searchValue === "") {
 			let warning = document.getElementById('warning');
 			warning.textContent = `WARNING: `;
-
-			IP_details.textContent = "";
-			location_details.textContent = "";
-			timezone_details.textContent = "";
-			ISP_details.textContent = "";
 		} else {
 			fetch(url)
   				.then((response) => response.json())
