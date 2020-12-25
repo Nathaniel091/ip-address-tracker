@@ -52,7 +52,7 @@ header > div[id="text-container"] form button{
 header > div[id="ip-details"] {
   position: relative;
   width: 70%;
-  margin-top: 50px;
+  margin-top: 10px;
   border-radius: 10px;
   opacity: 0.9;
 }
