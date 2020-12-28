@@ -37,10 +37,12 @@
 // });
 
 
+
 window.addEventListener('load', (event) => {
 	// API details
-	const API_KEY = `at_gbWW54UOrZHguQsCgMxbW0MKTeGRF`;
-	const defaultUrl = `https://geo.ipify.org/api/v1?apiKey=at_gbWW54UOrZHguQsCgMxbW0MKTeGRF&ipAddress=`;
+	const googleMapsEmbed_API_KEY = `AIzaSyBL_nzHgULHBN9BACCmABwpR1IwWK27fvw`;
+	const ipify_API_KEY = `at_gbWW54UOrZHguQsCgMxbW0MKTeGRF`;
+	const ipify_URL = `https://geo.ipify.org/api/v1?apiKey=${ipify_API_KEY}&ipAddress=`;
 
 	// Form details
 	const searchBox = document.getElementById('search-box');
@@ -52,51 +54,53 @@ window.addEventListener('load', (event) => {
 	const timezone_details = document.getElementById('timezone-details');
 	const ISP_details = document.getElementById('ISP-details');
 
-	// On load
-	fetch(defaultUrl)
+	// iframe
+	const map_Iframe = document.getElementById("map-frame");
+
+	// After page is loaded
+	fetch(ipify_URL)
 		.then((response) => response.json())
 		.then((data) => {
 			let lat = data.location.lat;
 			let lng = data.location.lng;
-			let googlemapUrl = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
-			// let googlemapUrl = `https://www.google.com/maps/embed/v1/place?key={BROWSER_KEY}&q={YOUR_ADDRESS_ENCODED}`;
-			// let googlemapUrl = `https://www.google.com/maps/place/50%C2%B006'14.0%22N+8%C2%B038'57.0%22E/@${lat},${lng},17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x0!8m2!3d50.1039!4d8.64917`;
-			let mapFrame = document.getElementById("map-frame")
-			
 
-			// let latLng = 50.1039,8.64917;
+			let map_IframeUrl = `https://www.google.com/maps/embed/v1/view?key=${googleMapsEmbed_API_KEY}&center=${lat},${lng}&zoom=5&maptype=satellite`;
 
-
-
-			// mapFrame.setAttribute('src', googlemapUrl)
+			map_Iframe.setAttribute('src', map_IframeUrl)
 			console.log(data)
-			console.log(mapFrame)
+			console.log(map_Iframe)
+
 
 			IP_details.textContent = `${data.ip}`;
 			location_details.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
 			timezone_details.textContent = `${data.location.timezone}`;
 			ISP_details.textContent = `${data.isp}`;
-
 		});
 
 
-	// On form submission
+	// On Form submission
 	submitButton.addEventListener("click", (event)=> {
 		event.preventDefault();
 		const searchValue = searchBox.value;
-		const url = `https://geo.ipify.org/api/v1?apiKey=${API_KEY}&ipAddress=${searchValue}`;
+		const ipify_URL2 = `https://geo.ipify.org/api/v1?apiKey=${ipify_API_KEY}&ipAddress=${searchValue}`;
 	
 		if (searchValue === "") {
 			let warning = document.getElementById('warning');
 			warning.textContent = `WARNING: `;
 		} else {
-			fetch(url)
+			fetch(ipify_URL2)
   				.then((response) => response.json())
   				.then((data) => {
     					IP_details.textContent = `${data.ip}`;
     					location_details.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
     					timezone_details.textContent = `${data.location.timezone}`;
     					ISP_details.textContent = `${data.isp}`;
+
+    					let lat = data.location.lat;
+					let lng = data.location.lng;
+    					let map_IframeUrl = `https://www.google.com/maps/embed/v1/view?key=${googleMapsEmbed_API_KEY}&center=${lat},${lng}&zoom=5&maptype=satellite`;
+					map_Iframe.setAttribute('src', map_IframeUrl)
+
   				});
 		}
 	});
