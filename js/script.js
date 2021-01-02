@@ -1,27 +1,3 @@
-// Problems that need fixing
-// -----------------------------
-
-// 1: searchBox is storing my search history(fix this) !!!
-
-
-
-// if ("geolocation" in navigator) {
-	// 	navigator.geolocation.getCurrentPosition(function(position) {
-	// 		let lat = position.coords.latitude;
-	// 		let lon = position.coords.longitude;
-
-	// 		console.log( "lat " + lat, "|| long " + lon)
-	// 		// console.log(position)
-	// 	}, function(error) {
-	// 		ipLookUp();
-	// 	});
-	// }else {
-	// 	ipLookUp()
-	// }
-	// function ipLookUp() {
-	// 	console.log('user refused ooo')
-	// };
-
 
 //  fetch('https://geo.ipify.org/api/v1?apiKey=at_gbWW54UOrZHguQsCgMxbW0MKTeGRF&ipAddress=8.8.8.8')
 // .then(response => {
@@ -42,9 +18,9 @@ window.addEventListener('load', (event) => {
 	// API details
 	const googleMapsEmbed_API_KEY = `AIzaSyBL_nzHgULHBN9BACCmABwpR1IwWK27fvw`;
 	const ipify_API_KEY = `at_gbWW54UOrZHguQsCgMxbW0MKTeGRF`;
-	const ipify_URL = `https://geo.ipify.org/api/v1?apiKey=${ipify_API_KEY}&ipAddress=`;
+	const ipifyAPI_URL = `https://geo.ipify.org/api/v1?apiKey=${ipify_API_KEY}&ipAddress=`; // if the "ipAdress=" parameter is empty, it will make the API request with the user's IP adress.
 
-	// Form details
+	// Form and Search box details
 	const searchBox = document.getElementById('search-box');
 	const submitButton = document.getElementById('submit-button');
 
@@ -57,18 +33,25 @@ window.addEventListener('load', (event) => {
 	// iframe
 	const map_Iframe = document.getElementById("map-frame");
 
+	// Output for all warning text
+	let warning = document.getElementById('warning');
+//===============================================================================================================
+
+
+
 	// After page is loaded
-	fetch(ipify_URL)
+	fetch(ipifyAPI_URL)
 		.then((response) => response.json())
 		.then((data) => {
+			console.log(data)
+
 			let lat = data.location.lat;
 			let lng = data.location.lng;
 
-			let map_IframeUrl = `https://www.google.com/maps/embed/v1/view?key=${googleMapsEmbed_API_KEY}&center=${lat},${lng}&zoom=5&maptype=satellite`;
+			let map_IframeUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbed_API_KEY}&q=${lat},${lng}&center=${lat},${lng}&zoom=5&maptype=satellite`;
 
 			map_Iframe.setAttribute('src', map_IframeUrl)
-			console.log(data)
-			console.log(map_Iframe)
+			// console.log(map_Iframe)
 
 
 			IP_details.textContent = `${data.ip}`;
@@ -82,15 +65,18 @@ window.addEventListener('load', (event) => {
 	submitButton.addEventListener("click", (event)=> {
 		event.preventDefault();
 		const searchValue = searchBox.value;
-		const ipify_URL2 = `https://geo.ipify.org/api/v1?apiKey=${ipify_API_KEY}&ipAddress=${searchValue}`;
+		const ipifyAPI_URL2 = `https://geo.ipify.org/api/v1?apiKey=${ipify_API_KEY}&ipAddress=${searchValue}`;
 	
 		if (searchValue === "") {
 			let warning = document.getElementById('warning');
-			warning.textContent = `WARNING: `;
+			warning.className = "text-warning";
+			warning.textContent = "Invalid";
 		} else {
-			fetch(ipify_URL2)
+			fetch(ipifyAPI_URL2)
   				.then((response) => response.json())
   				.then((data) => {
+					console.log(data)
+
     					IP_details.textContent = `${data.ip}`;
     					location_details.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
     					timezone_details.textContent = `${data.location.timezone}`;
@@ -98,7 +84,9 @@ window.addEventListener('load', (event) => {
 
     					let lat = data.location.lat;
 					let lng = data.location.lng;
-    					let map_IframeUrl = `https://www.google.com/maps/embed/v1/view?key=${googleMapsEmbed_API_KEY}&center=${lat},${lng}&zoom=5&maptype=satellite`;
+    					// let map_IframeUrl = `https://www.google.com/maps/embed/v1/view?key=${googleMapsEmbed_API_KEY}&center=${lat},${lng}&zoom=5&maptype=satellite`;
+    					let map_IframeUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbed_API_KEY}&q=${lat},${lng}&center=${lat},${lng}&zoom=5&maptype=satellite`;
+    					
 					map_Iframe.setAttribute('src', map_IframeUrl)
 
   				});
