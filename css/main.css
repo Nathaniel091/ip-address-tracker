@@ -16,7 +16,7 @@ header > div[id="text-container"] {
   width: 40%;
   margin-top: -180px;
 }
-header > div[id="text-container"] h2,
+header > div[id="text-container"] h1,
 header > div[id="text-container"] form {
   width: 100%;
 }

@@ -78,6 +78,9 @@
 	header > div[id="text-container"] {
 		margin-top: -310px;
 	}
+	header > div[id="text-container"] h1 {
+		font-size: 2em;
+	}
 	/*IP-Details*/
 	header > div[id="ip-details"] {
 		font-size: 0.8em;
