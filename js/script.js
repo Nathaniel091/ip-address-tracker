@@ -51,7 +51,8 @@ window.addEventListener('load', (event) => {
 			let map_IframeUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbed_API_KEY}&q=${lat},${lng}&center=${lat},${lng}&zoom=5&maptype=satellite`;
 
 			map_Iframe.setAttribute('src', map_IframeUrl)
-			// console.log(map_Iframe)
+			console.log(map_Iframe)
+			console.log(map_IframeUrl)
 
 
 			IP_details.textContent = `${data.ip}`;

@@ -9,7 +9,6 @@ body {
 }
 header {
   height: 200px;
-  /*background-image: url("images/pattern-bg.png");*/
 }
 
 /*Text-Container and Search Box*/
@@ -38,7 +37,6 @@ header > div[id="text-container"] form input{
 }
 header > div[id="text-container"] form input:focus{
   outline: thin solid transparent;
-  /*caret-color: skybl;*/
 }
 
 header > div[id="text-container"] form button{
