@@ -15,9 +15,10 @@
 </head>
 
 <body class="bg-dark text-center">
+	<!-- Header -->
 	<header id="" class="">
-		<!-- Image Used As Background -->
-		<div id="bg-image-cont" class="" style="background: #0a68d9; width: 100%; height: 200px;">
+		<!-- Image Used As Background For Header-->
+		<div id="bg-image-cont" class="" style="background: #0a68d9; width: 100%; height: 100%;">
 			<img src="images/pattern-bg.png" alt="pattern image" height="100%" width="100%">
 		</div>
 
@@ -25,14 +26,16 @@
 		<div id="text-container" class="mx-auto">
 			<h1 id="" class="text-white">IP Address Tracker</h1>
 			<form action="" id="" class="d-flex">
-				<input id="search-box" type="search" name="search" placeholder="Search for any IP address or domain">
+				<input id="search-box" type="search" name="search" placeholder="Search for any IP(Ipv4) address e.g 1.1.1.1">
 				<button id="submit-button" type="submit">Search</button>
 			</form>
 		</div>
 
 		<!-- Warning -->
-		<div id="warning-cont" class="">
-			<Small id="warning" class="text-white">WARNING: 'Data may not be very accurate'.</Small>
+		<div id="warning-cont" class="d-flex justify-content-center mx-auto">
+			<small id="warning" class="text-white">Disclaimer: 'Data may not be very accurate'.</small>
+			<!-- working with javascript -->
+			<span id="animation" class="loading-animation d-none">'</span>
 		</div>
 
 		<!-- IP-Details -->
@@ -64,18 +67,25 @@
 	</header>
 
 
-
+	<!-- Main -->
 	<main id="" class="">
-		<!-- iframe for map -->
-		<!-- <iframe id="map-frame" style="width:100%; height:90vh; border:0;" frameborder="0" src="https://googleMapsEmbedAPI.com ('_')This iframe is working with the javascript file)" allowfullscreen></iframe> -->
-
-		<!-- <iframe id="map-frame" frameborder="0" style="border:0; height:90vh; width:100%;" src="https://www.google.com/maps/embed/v1/undefined?origin=...&q=...&destination=...&center=...&zoom=5&key=AIzaSyBL_nzHgULHBN9BACCmABwpR1IwWK27fvw&maptype=satellite" allowfullscreen></iframe> -->
-
+		<!-- Iframe -->
 		<iframe id="map-frame" style="width:100%; height:90vh; border:0;" frameborder="0" src="" allowfullscreen></iframe>
 	</main>
-<!-- https://www.google.com/maps/embed/v1/view?key=${googleMapsEmbed_API_KEY}&center=${lat},${lng}&zoom=5&maptype=satellite -->
 
-<!-- lat: 50.1039, lng: 8.64917 -->
+
+	<!-- Footer -->
+	<footer id="" class="">
+		<!-- Image Used As Background For-->
+		<div id="bg-image-cont" class="" style="position:absolute; background: #0a68d9; width: 100%; height: inherit;">
+			<img src="images/pattern-bg.png" alt="pattern image" height="100%" width="100%">
+		</div>
+
+		<!-- Credit -->
+		<div id="credit" class="d-flex justify-content-center mx-auto text-center">
+			<p>alyfalsdfa</p>
+		</div>
+	</footer>
 
 
 	<!-- bootstrap ------------------------------------------------------->
@@ -89,3 +99,4 @@
 	<script src="js/script.js"></script>
 </body>
 </html>
+<!-- The End -->

@@ -38,6 +38,10 @@ header > div[id="text-container"] form input{
 header > div[id="text-container"] form input:focus{
   outline: thin solid transparent;
 }
+header > div[id="text-container"] form input::placeholder{
+  font-size: 0.9em;
+  font-weight: 500;
+}
 
 header > div[id="text-container"] form button{
   border-top-left-radius: initial; 
@@ -45,6 +49,40 @@ header > div[id="text-container"] form button{
   width: 19%; 
   background: rgba(255, 255, 255, 0.7);
 }
+
+
+
+/*Warning*/
+div[id="warning-cont"] {
+  position: relative;
+  margin-top: 3px;
+  max-width: 100%;
+}
+div[id="warning-cont"] #warning{
+  font-size: 0.9em;
+ }
+/*loading animation*/
+span[class="loading-animation"]{
+  position: relative;
+  display: block; /*must have a display other than inline*/
+  width: 10px; /*width and height must be same*/
+  height: 10px; /*width and height must be same*/
+  color: black;
+  font-weight: bold;
+  font-size: 0.7em;
+
+  /*background-color: rgb(0, 255, 0); /*green*/
+  background-color: skyblue;
+  margin-top: 7px;
+  margin-left: 4px;
+  /*padding-top: 0px;*/
+  animation: rotateThreeSixtyDegrees 1.2s linear 0s infinite;
+}
+@keyframes rotateThreeSixtyDegrees {
+  from {-webkit-transform: rotateZ(0deg);}
+  to {-webkit-transform: rotateZ(360deg);}
+}
+
 
 /*IP-Details*/
 header > div[id="ip-details"] {
@@ -67,6 +105,27 @@ header > div div:nth-child(4) {
 
 
 /*MAIN*/
-main > iframe {
-  height: 80vh;
+main iframe[id="map-frame"] {
+  height: 90vh;
 }
+
+
+/*FOOTER*/
+footer {
+  height: 200px;
+}
+footer div[id="credit"] {
+  width: 50%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+
+  -webkit-transform: translate(50%);
+     -moz-transform: translate(50%);
+      -ms-transform: translate(50%);
+       -o-transform: translate(50%);
+          transform: translate(50%);
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+}
+/*The End*/
