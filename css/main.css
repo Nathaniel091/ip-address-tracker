@@ -60,7 +60,10 @@ div[id="warning-cont"] {
 }
 div[id="warning-cont"] #warning{
   font-size: 0.9em;
- }
+}
+/*div[id="warning-cont"] #warning:hover{
+  cursor: ;
+}*/
 /*loading animation*/
 span[class="loading-animation"]{
   position: relative;

@@ -1,19 +1,19 @@
 // - how to check if data connection is on
 // - setTimeOut so that if theres no internet, it will stop loading
-// - improve search pattern with regex
 // - improve error message
 // - if response !ok
 // - catch errors and out put it to the "warning"
+// - git commit "js library"
 
-window.addEventListener('load', pageLoaded);
-
-
-
+// ===================================================================================================
 	// API details
 	// googleMapsEmbed
 	const googleMapsEmbed_API_KEY = `AIzaSyBL_nzHgULHBN9BACCmABwpR1IwWK27fvw`;
-	// ipify
-	const ipify_API_KEY = `at_gbWW54UOrZHguQsCgMxbW0MKTeGRF`;
+	
+	// ipify details
+	// const ipify_API_KEY = `at_gbWW54UOrZHguQsCgMxbW0MKTeGRF`;
+	// const ipifyAPI_URL = `https://geo.ipify.org/api/v1?apiKey=${ipify_API_KEY}&ipAddress=`; // if the "ipAdress=" parameter is empty, the API request is made with the user's IP adress.
+	const ipify_API_KEY = `atgbWW54UOrZHguQsCgMxbW0MKTeGRF`;
 	const ipifyAPI_URL = `https://geo.ipify.org/api/v1?apiKey=${ipify_API_KEY}&ipAddress=`; // if the "ipAdress=" parameter is empty, the API request is made with the user's IP adress.
 
 	// Form and Search box details
@@ -29,6 +29,8 @@ window.addEventListener('load', pageLoaded);
 	// iframe
 	const map_Iframe = document.getElementById("map-frame");
 
+	// Loading animation
+	const animation = document.getElementById('animation');
 	// Output for all warning & error text/message
 	const warning = document.getElementById('warning');
 	const warningText = {
@@ -37,45 +39,106 @@ window.addEventListener('load', pageLoaded);
 		emptyStringText: "Invalid Input",
 		defaultText: "Invalid: Ipv4 address is a combination of [ONLY!] numbers(i.e digits) and periods(.)",
 	};
-	// Loading animation
-	const animation = document.getElementById('animation');
+
 //===============================================================================================================
 
 
 // After page is loaded
+window.addEventListener('load', pageLoaded);
+
+// TEST CODE =====================================================
 function pageLoaded() {
-	async function myFetch() {
-		// after page loads, display a loading animation;
-		warning.textContent = warningText.pleaseWait;
-		animation.classList.remove("d-none");
-
-		// then fetch API and return json
-		let response = await fetch(ipifyAPI_URL);
-		return response.json();
+	
+	warning.textContent = warningText.pleaseWait;
+	// add loading animation
+	animation.classList.remove("d-none");
+	// then add a progres cursor
+	if (warning.textContent = warningText.pleaseWait){
+		warning.style.cursor = 'progress';
 	}
-	myFetch().then((data) => {
-		let lat = data.location.lat;
-		let lng = data.location.lng;
 
-		// set iframe's URL
-		let map_IframeUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbed_API_KEY}&q=${lat},${lng}&center=${lat},${lng}&zoom=5&maptype=satellite`;
-		map_Iframe.setAttribute('src', map_IframeUrl);
+	fetch(ipifyAPI_URL)
+		.then(handleResponse)
+		.then((data) => {
+			console.log("data =>>", data)
+			let lat = data.location.lat;
+			let lng = data.location.lng;
 
-		//after iframe URL has been set, then set warnig text back to initial and hide the animation;
-		warning.textContent = warningText.disclaimerText;
-		animation.classList.add("d-none");
+			// set iframe's URL
+			let map_IframeUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbed_API_KEY}&q=${lat},${lng}&center=${lat},${lng}&zoom=5&maptype=satellite`;
+			map_Iframe.setAttribute('src', map_IframeUrl);
 
-		// display the details to the webpage
-		IP_details.textContent = `${data.ip}`;
-		location_details.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
-		timezone_details.textContent = `${data.location.timezone}`;
-		ISP_details.textContent = `${data.isp}`;
-	});
+			//after iframe URL has been set, then set warnig text back to initial and hide the animation;
+			warning.textContent = warningText.disclaimerText;
+			animation.classList.add("d-none");
+
+			// display the details to the webpage
+			IP_details.textContent = `${data.ip}`;
+			location_details.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
+			timezone_details.textContent = `${data.location.timezone}`;
+			ISP_details.textContent = `${data.isp}`;
+		})
+		.catch((error) => {
+			console.log("my ERROR =>>", error)
+
+			// change the cursor
+			warning.style.cursor = 'help';
+			// stop the animation, change the text color to yellow & output the error and error message
+			animation.classList.add("d-none");
+			warning.classList.add("text-warning");
+			warning.textContent = `error! ${error.status} ${error.statusText}`;
+			warning.setAttribute("title", `MESSAGE: ${error.messages}`);
+		})
+		function handleResponse (response) {
+		 	let contentType = response.headers.get('content-type')
+		  	if (contentType.includes('application/json')) {
+		    		return handleJSONResponse(response)
+		  	} else if (contentType.includes('text/html')) {
+		    		return handleTextResponse(response)
+		  	} else {
+		    		// Other response types as necessary. I haven't found a need for them yet though.
+		    		// throw new Error(`Sorry, content-type ${contentType} not supported`)
+		    		Promise.reject(`Sorry, content-type ${contentType} not supported`)
+		  	}
+		}
+
+		function handleJSONResponse (response) {
+		  return response.json()
+		    .then(json => {
+		     	if (response.ok) {
+		        		return json
+		      	} else {
+		        		return Promise.reject(Object.assign({}, json, {
+		          		status: response.status,
+		          		statusText: response.statusText
+		        		}))
+		      	}
+		    })
+		}
+		function handleTextResponse (response) {
+		  	return response.text()
+		    .then(text => {
+		      	if (response.ok) {
+		        		return text
+		      	} else {
+			     	return Promise.reject({
+			     		status: response.status,
+			          	statusText: response.statusText,
+			          	err: text
+			        	})
+		      	}
+		    })
+		}
 }
+// TEST CODE ================================================
+
+
+
 
 // On Form submission
 submitButton.addEventListener("click", afterFormSubmitted);
 
+// function after form submission
 function afterFormSubmitted(event) {
 	// prevent detault execution 
 	event.preventDefault();
@@ -88,6 +151,7 @@ function afterFormSubmitted(event) {
 		fetchTheAPI();
 	}	
 }
+
 
 // function filterTestPassed()
 function filterTestPassed(searchValue) {
@@ -119,6 +183,7 @@ function filterTestPassed(searchValue) {
 	}
 }
 
+
 //function fetchTheAPI()
 function fetchTheAPI() {
 	// declairing variables 
@@ -132,7 +197,7 @@ function fetchTheAPI() {
 			}
 		})
 		.then((data) => {
-		console.log(data)
+			console.log(data)
 
 			IP_details.textContent = `${data.ip}`;
 			location_details.textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
@@ -140,15 +205,15 @@ function fetchTheAPI() {
 			ISP_details.textContent = `${data.isp}`;
 
 			let lat = data.location.lat;
-		let lng = data.location.lng;
+			let lng = data.location.lng;
 
-		// setURL for iframe
+			// setURL for iframe
 			let map_IframeUrl = `https://www.google.com/maps/embed/v1/place?key=${googleMapsEmbed_API_KEY}&q=${lat},${lng}&center=${lat},${lng}&zoom=5&maptype=satellite`;
-		map_Iframe.setAttribute('src', map_IframeUrl)
-			
+			map_Iframe.setAttribute('src', map_IframeUrl)
+				
 			// display a new text & remove the loading animation
-		warning.textContent = "";
-		animation.classList.add("d-none")
+			warning.textContent = warningText.disclaimerText;
+			animation.classList.add("d-none")
 		})
 		.catch((error) => {
 			warning.classList.add("text-warning")
@@ -157,3 +222,5 @@ function fetchTheAPI() {
 		});
 }
 // The End
+
+
