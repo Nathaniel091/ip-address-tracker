@@ -6,6 +6,7 @@
 
 body {
   background: black;
+  font-family: 'Lato', sans-serif;
 }
 header {
   height: 200px;
@@ -61,9 +62,6 @@ div[id="warning-cont"] {
 div[id="warning-cont"] #warning{
   font-size: 0.9em;
 }
-/*div[id="warning-cont"] #warning:hover{
-  cursor: ;
-}*/
 /*loading animation*/
 span[class="loading-animation"]{
   position: relative;
@@ -115,20 +113,52 @@ main iframe[id="map-frame"] {
 
 /*FOOTER*/
 footer {
-  height: 200px;
+  height: 140px;
+  position: relative;
 }
-footer div[id="credit"] {
-  width: 50%;
+footer section[id="footer-container"] {
   position: absolute;
-  display: flex;
-  justify-content: center;
-
-  -webkit-transform: translate(50%);
-     -moz-transform: translate(50%);
-      -ms-transform: translate(50%);
-       -o-transform: translate(50%);
-          transform: translate(50%);
+  width: 100%;
+  height: inherit;
   background: rgba(0, 0, 0, 0.3);
   color: rgba(255, 255, 255, 0.9);
 }
+
+/*credit*/
+footer div[id="credit"] > div{
+  width: 60%;
+}
+footer div[id="credit"] #frontendmentor p > a{
+  display: inline-flex;
+  color: white;
+  text-decoration: underline;
+}
+footer div[id="credit"] #frontendmentor p > a:hover{
+  text-decoration: none;
+}
+
+/*my contact details*/
+footer div[id="credit"] #myContactDetails #myLinks{
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+footer div[id="credit"] #myContactDetails #myLinks > a{
+  display: inline-flex;
+  color: white;
+  font-size: 1.2em;
+}
+
+/*copyright*/
+footer div[id="copyrightCont"] {
+  border-top: thin solid white;
+  padding-top: 10px;
+  /*width: 98%;*/
+  margin: auto;
+}
 /*The End*/
+
+
+
+
+

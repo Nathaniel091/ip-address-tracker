@@ -13,6 +13,13 @@
 	}
 }
 
+@media screen and (max-width:800px) {
+	/*credit*/
+	footer div[id="credit"] > div{
+  		width: 90%;
+	}
+}
+
 @media screen and (max-width:750px) {
 	header {
 		height: 280px;
@@ -67,6 +74,26 @@
 	/*Text-Container and Search Box*/
 	header > div[id="text-container"] {
 		margin-top: -330px;
+	}
+
+	/*footer*/
+	footer {
+		height: 200px;
+	}
+	/*credit*/
+	footer div[id="credit"] > div{
+		display: block !important;
+		/*transform: translate(50%);*/
+  		/*width: 100%;*/
+  		background: green;
+  		margin: auto;
+  		text-align: center;
+
+	}
+	footer div[id="credit"] > div #myContactDetails{
+		width: 90%;
+		background: red;
+		text-align: center;
 	}
 }
 
