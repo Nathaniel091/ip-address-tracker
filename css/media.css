@@ -83,17 +83,20 @@
 	/*credit*/
 	footer div[id="credit"] > div{
 		display: block !important;
-		/*transform: translate(50%);*/
-  		/*width: 100%;*/
-  		background: green;
   		margin: auto;
   		text-align: center;
-
 	}
+	/*hr*/
+	footer div[id="credit"] #frontendmentor > hr{
+		display: block !important;
+		width: 150px;
+		background-color: rgba(0, 0, 0, 0.2);
+		margin: auto;
+		margin-bottom: 10px;
+	}
+
 	footer div[id="credit"] > div #myContactDetails{
-		width: 90%;
-		background: red;
-		text-align: center;
+		justify-content: center;
 	}
 }
 

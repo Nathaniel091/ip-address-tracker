@@ -210,6 +210,7 @@ function filterTestPassed(searchValue) {
 
 // current year for opyright
 currentYear()
+
 function currentYear() {
 	let currentYear = new Date().getFullYear()
 	let copyright = document.getElementById('copyright')
