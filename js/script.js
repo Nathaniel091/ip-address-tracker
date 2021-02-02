@@ -48,7 +48,7 @@ function currentYear() {
 // After page is loaded ==============================
 window.addEventListener('load', pageLoaded);
 
-function pageLoaded() {	
+function pageLoaded() {
 	warning.textContent = warningText.pleaseWait;
 	// add loading animation
 	animation.classList.remove("d-none");
