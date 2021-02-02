@@ -1,12 +1,10 @@
-// - how to check if data connection is on
-// - setTimeOut so that if theres no internet, it will stop loading
+// - remove function "filterTestPassed"
+// - input tag NOT clicking on mobile devices
 // - improve error message
-// - if response !ok
-// - catch errors and out put it to the "warning"
-// - git commit "js library"
 
-	
+
 // ipifyAPI_URL = `https://geo.ipify.org/api/v1?apiKey=at_gbWW54UOrZHguQsCgMxbW0MKTeGR&ipAddress=`; // if the "ipAdress=" parameter is empty, the API request is made with the user's IP adress.
+
 
 // ===================================================================================================
 	// API details
@@ -47,7 +45,7 @@
 
 
 // After page is loaded =====================================================
-window.addEventListener('load', pageLoaded);
+// window.addEventListener('load', pageLoaded);
 
 function pageLoaded() {	
 	warning.textContent = warningText.pleaseWait;

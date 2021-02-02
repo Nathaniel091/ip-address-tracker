@@ -13,16 +13,10 @@
 	}
 }
 
-@media screen and (max-width:800px) {
-	/*credit*/
-	footer div[id="credit"] > div{
-  		width: 90%;
-	}
-}
-
-@media screen and (max-width:750px) {
+@media screen and (max-width:860px) {
 	header {
-		height: 280px;
+		/*height: 280px;*/
+		height: 350px;
 	}
 	/*background image container*/
 	header > div[id="bg-image-cont"] {
@@ -30,7 +24,13 @@
 	}
 	/*Text-Container and Search Box*/
 	header > div[id="text-container"] {
-		margin-top: -265px;
+		margin-top: -260px;
+	}
+}
+@media screen and (max-width:800px) {
+	/*credit*/
+	footer div[id="credit"] > div{
+  		width: 90%;
 	}
 }
 
@@ -61,21 +61,21 @@
 }
 
 @media screen and (max-width:630px) {
-	/*Text-Container and Search Box*/
-	header > div[id="text-container"] {
-		width: 80%;
-	}
-}
-
-@media screen and (max-width:550px) {
 	header {
 		height: 350px;
 	}
 	/*Text-Container and Search Box*/
 	header > div[id="text-container"] {
+		width: 80%;
+	}
+	/*Text-Container and Search Box*/
+	header > div[id="text-container"] {
 		margin-top: -330px;
 	}
+	
+}
 
+@media screen and (max-width:550px) {
 	/*footer*/
 	footer {
 		height: 200px;
@@ -102,11 +102,11 @@
 
 @media screen and (max-width:430px) {
 	header {
-		height: 360px;
+		height: 350px;
 	}
 	/*Text-Container and Search Box*/
 	header > div[id="text-container"] {
-		margin-top: -310px;
+		margin-top: -300px;
 	}
 	header > div[id="text-container"] h1 {
 		font-size: 2em;
@@ -126,7 +126,7 @@
 
 @media screen and (max-width:390px) {
 	header {
-		height:350px;
+		height:320px;
 	}
 	/*Text-Container and Search Box*/
 	header > div[id="text-container"] {
