@@ -99,6 +99,13 @@
 	}
 }
 
+@media screen and (max-width:500px) {
+	/*Div Used As Background For*/
+	footer div[id="bg-image-cont"] img[id="bg-image"] {
+		display: none;
+	} 
+
+}
 @media screen and (max-width:430px) {
 	header {
 		height: 350px;
