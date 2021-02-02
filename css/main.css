@@ -35,7 +35,7 @@ header > div[id="text-container"] form input{
   padding-left: 20px;
   margin-right: 3px;
   background: rgba(255, 255, 255, 0.7);
-  z-index: 1000;
+  /*z-index: 1000;*/
 }
 header > div[id="text-container"] form input:focus{
   outline: thin solid transparent;
