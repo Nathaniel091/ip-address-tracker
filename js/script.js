@@ -1,25 +1,27 @@
-// - remove function "filterTestPassed"
-// - input tag NOT clicking on mobile devices
-// - improve error message
+
+
+// current year for copyright text
+currentYear()
+function currentYear() {
+	let currentYear = new Date().getFullYear()
+	let copyright = document.getElementById('copyright')
+	copyright.textContent += ` ${currentYear}`
+}
 
 
 // ipifyAPI_URL = `https://geo.ipify.org/api/v1?apiKey=at_gbWW54UOrZHguQsCgMxbW0MKTeGR&ipAddress=`; // if the "ipAdress=" parameter is empty, the API request is made with the user's IP adress.
-
-
 // ===================================================================================================
 	// API details
 	// googleMapsEmbed
 	const googleMapsEmbed_API_KEY = `AIzaSyBL_nzHgULHBN9BACCmABwpR1IwWK27fvw`;
-	
-	// Form details
-	const submitButton = document.getElementById('submit-button')
-	const searchBox = document.getElementById('search-box');
-	const searchValue = searchBox.value;
-
 	// ipify details
 	const ipify_API_KEY = `at_gbWW54UOrZHguQsCgMxbW0MKTeGRF`;
 	let ipAddress = "";
 
+	// Form details
+	const submitButton = document.getElementById('submit-button')
+	const searchBox = document.getElementById('search-box');
+	const searchValue = searchBox.value;
 
 	// Other details that will be updated with javascript
 	const IP_details = document.getElementById('IP-details');
@@ -40,12 +42,11 @@
 		emptyStringText: "Invalid Input",
 		defaultText: "Invalid: Ipv4 address is a combination of [ONLY!] numbers(i.e digits) and periods(.)",
 	};
+//==============================================================================================
 
-//===============================================================================================================
 
-
-// After page is loaded =====================================================
-// window.addEventListener('load', pageLoaded);
+// After page is loaded ==============================
+window.addEventListener('load', pageLoaded);
 
 function pageLoaded() {	
 	warning.textContent = warningText.pleaseWait;
@@ -205,15 +206,6 @@ function filterTestPassed(searchValue) {
 	}
 };
 
-
-// current year for opyright
-currentYear()
-
-function currentYear() {
-	let currentYear = new Date().getFullYear()
-	let copyright = document.getElementById('copyright')
-	copyright.textContent += ` ${currentYear}`
-}
 
 // The End
 
