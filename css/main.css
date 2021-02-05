@@ -140,7 +140,6 @@ footer div[id="credit"] #frontendmentor p > a:hover{
 
 /*my contact details*/
 footer div[id="credit"] #myContactDetails #myLinks{
-  width: 100px;
   display: flex;
   justify-content: space-between;
 }
